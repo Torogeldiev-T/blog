@@ -1,0 +1,27 @@
+{% load blog_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+</head>
+<body>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<div id="sidebar">
+    <h2> I have written {% posts_written %} posts in my blog </h2>
+    <p>
+        <a href="{% url 'blog:post_feed' %}">Subscribe to my RSS feed</a>
+    </p>
+    <p> This is my blog. Thanks for visiting my page, follow my posts and stay health!</p>
+    <h3>Latest posts</h3>
+    {% show_latest_posts 3 %}
+    <h3>Most commented posts</h3>
+    {% most_commented_posts 3%}
+</div>
+</body>
+</html>
